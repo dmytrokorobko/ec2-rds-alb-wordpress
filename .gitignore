@@ -1,0 +1,170 @@
+########################################
+# === Terraform ===
+########################################
+# Local directories and caches
+.terraform/
+
+# State files (contain sensitive data)
+terraform.tfstate
+terraform.tfstate.*
+
+# Crash logs and overrides
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Plan files
+terraform.tfplan
+*.tfplan
+
+# Sensitive variable files
+*.tfvars
+*.tfvars.json
+
+# Logs and debug output
+*.log
+
+
+########################################
+# === Ansible ===
+########################################
+# Auto-generated inventories
+inventory/hosts.ini
+.ansible/
+.ssh/known_hosts
+
+# Secrets, vaults, keys, certs
+*.vault
+*.secret
+*.key
+*.pem
+*.crt
+*.cer
+*.p12
+
+# Temporary and retry files
+*.retry
+*.tmp
+*.bak
+*.swp
+*.orig
+
+# Python cache (for Ansible plugins)
+__pycache__/
+*.pyc
+*.pyo
+
+
+########################################
+# === Jenkins ===
+########################################
+# Jenkins home, jobs, and workspace
+jenkins/jenkins_home/
+jenkins/jobs/
+jenkins/workspace/
+jenkins/builds/
+jenkins/fingerprints/
+jenkins/users/
+jenkins/secrets/
+jenkins/war/
+jenkins/plugins/
+
+# Temporary or backup pipeline files
+jenkins/*.jenkinsfile.bak
+jenkins/*.jenkinsfile.tmp
+jenkins/*.pipeline.log
+
+# Docker context used by Jenkins
+jenkins/.docker/
+jenkins/.dockerignore
+
+
+########################################
+# === Python (scripts, helpers, tests) ===
+########################################
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test and coverage results
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+htmlcov/
+
+# Build artifacts and pip cache
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+
+
+########################################
+# === Docker / Containers ===
+########################################
+# Compose overrides and temp volumes
+docker-compose.override.yml
+*.pid
+*.sock
+container_data/
+volumes/
+.tmp/
+
+# Image build cache
+.cache/
+
+
+########################################
+# === IDE / Editors ===
+########################################
+# VS Code, JetBrains, Sublime, etc.
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+
+########################################
+# === System / OS files ===
+########################################
+# Environment files
+.env
+.env.*
+# macOS, Windows system junk
+.DS_Store
+Thumbs.db
+desktop.ini
+# Backup and swap
+*~
+*.swp
+*.swo
+
+
+########################################
+# === Miscellaneous ===
+########################################
+# Temporary exports, logs, test data
+exports/
+tmp/
+temp/
+test-output/
+logs/
+
+# Local project data
+local_data/
+scratch/

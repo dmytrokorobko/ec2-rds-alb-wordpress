@@ -1,0 +1,5 @@
+---
+ansible_user: ec2-user
+ansible_python_interpreter: /usr/bin/python3
+timezone: UTC
+env: dev
