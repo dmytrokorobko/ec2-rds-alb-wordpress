@@ -24,13 +24,7 @@ module "ec2_sg" {
     name = "ec2-sg"
     vpc_id = data.terraform_remote_state.network_state.outputs.vpc_id
     egress_cidr_blocks = ["0.0.0.0/0"]
-    ingress = [
-      {
-         port = 80
-         cidr_blocks = ["0.0.0.0/0"]
-         security_groups = null
-      }
-    ]
+    ingress = []
   }
 }
 
@@ -44,6 +38,12 @@ locals {
          subnet
    ]
   ])
+
+  wordpress_instance_ids = [
+    for inst in aws_instance.ec2 :
+      inst.id
+      if inst.tags["Role"] == "wordpress"
+  ]
 }
 
 resource "aws_key_pair" "key" {
