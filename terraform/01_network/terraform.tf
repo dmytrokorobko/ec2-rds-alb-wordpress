@@ -8,8 +8,8 @@ terraform {
   }
   
   backend "s3" {
-    bucket         = "s3-bucket-name"
-    key            = "project_name/layer_name/terraform.tfstate"
+    bucket         = "dmytro-project-example-terraform-state"
+    key            = "lab24/network/terraform.tfstate"
     region         = "us-east-1"
   }
 }
