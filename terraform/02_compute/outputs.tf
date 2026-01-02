@@ -9,3 +9,7 @@ output "bastion_ip" {
 output "wordpress_ec2_ids" {
   value = local.wordpress_instance_ids
 }
+
+output "wordpress_ec2_private_ip" {
+  value = local.wordpress_instance_private_ips
+}

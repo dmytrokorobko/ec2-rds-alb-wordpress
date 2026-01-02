@@ -28,6 +28,15 @@ module "ec2_sg" {
   }
 }
 
+resource "aws_security_group_rule" "bastion_to_ec2_ssh" {
+  type = "ingress"
+  from_port = 22
+  to_port = 22
+  protocol = "tcp"
+  security_group_id = module.ec2_sg.sg_id
+  source_security_group_id = module.bastion_sg.sg_id
+}
+
 locals {
   key_name = "lab"
   
@@ -44,6 +53,12 @@ locals {
       inst.id
       if inst.tags["Role"] == "wordpress"
   ]
+
+  wordpress_instance_private_ips = [
+    for inst in aws_instance.ec2 :
+      inst.private_ip
+      if inst.tags["Role"] == "wordpress"
+  ]
 }
 
 resource "aws_key_pair" "key" {
@@ -54,9 +69,9 @@ resource "aws_key_pair" "key" {
 resource "aws_instance" "ec2" {
   count = var.ec2_instances_per_subnet * length(local.subnets) + 1
   ami = data.aws_ami.ubuntu_ami.id
-  associate_public_ip_address = true
+  associate_public_ip_address = count.index == 0 ? true : false
   instance_type = "t3.micro"
-  key_name = count.index == 0 ? local.key_name : null
+  key_name = local.key_name
   subnet_id = count.index == 0 ? local.subnets[0] : local.subnet_matrix[count.index - 1]
   tags = {
     Name = count.index == 0 ? "Bastion" : "Wordpress #${count.index}"
