@@ -1,1 +1,8 @@
+- name: Install WordPress
+  hosts: servers
+  become: true
 
+  tasks:
+  - name: Ping
+    ansible.builtin.ping:
+      
